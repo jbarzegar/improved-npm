@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "version": "0.1",
+  "name": "improved-npm",
+  "description": "Adds cool features to npm",
+  "background": {
+    "page": "background.html"
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.npmjs.com/*"],
+      "js": [
+        "lib/webext-polyfill.js",
+        "content-scripts/select-package-manager.js",
+        "content-scripts/inject-status.js"
+      ]
+    }
+  ]
+}
